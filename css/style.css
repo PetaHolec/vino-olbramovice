@@ -1,0 +1,258 @@
+/* Víno Olbramovice
+   Barvy jsou vzaté z malované fasády jejich sklepa:
+   vápenná bílá, mátová zeď, fialové hrozny, cihla. */
+
+:root {
+  --wall: #f3efe4;
+  --wall-dark: #e8e1d0;
+  --mint: #dcebd3;
+  --leaf: #4c7442;
+  --grape: #3b3561;
+  --grape-light: #e9e6f2;
+  --brick: #a94a2c;
+  --brick-dark: #8a3a21;
+  --ink: #27231d;
+  --ink-soft: #5b544a;
+
+  --head: "Young Serif", Georgia, serif;
+  --text: "Literata", Georgia, "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+
+body {
+  margin: 0;
+  background: var(--wall);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--text);
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+h1, h2, h3 { font-family: var(--head); font-weight: 400; line-height: 1.1; margin: 0; }
+h2 { font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); color: var(--grape); margin-bottom: 1.25rem; }
+h3 { font-size: 1.25rem; }
+p { margin: 0 0 1rem; }
+figure { margin: 0; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+.small { font-size: .9rem; color: var(--ink-soft); }
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; z-index: 99; background: var(--ink); color: var(--wall); padding: .5rem .8rem; }
+:focus-visible { outline: 2px solid var(--brick); outline-offset: 2px; }
+
+.button {
+  display: inline-block;
+  background: var(--brick);
+  color: var(--wall);
+  border: 0;
+  border-radius: 2px;
+  padding: .75rem 1.25rem;
+  font: 600 1rem/1.2 var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+.button:hover { background: var(--brick-dark); }
+.button--light { background: var(--mint); color: var(--ink); }
+.button--light:hover { background: #fff; }
+.link { color: var(--brick); font-weight: 600; }
+
+/* ---------- Hlavička ---------- */
+.top {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--wall);
+  border-bottom: 1px solid var(--ink);
+}
+.top__in { display: flex; align-items: center; gap: 2rem; height: 62px; }
+.logo { font-family: var(--head); font-size: 1.35rem; text-decoration: none; color: var(--grape); white-space: nowrap; }
+.menu { display: flex; gap: 1.4rem; margin-left: auto; }
+.menu a { text-decoration: none; }
+.menu a:hover { text-decoration: underline; }
+.top__tel { font-weight: 600; color: var(--brick); text-decoration: none; white-space: nowrap; }
+.menu-btn { display: none; }
+
+/* ---------- Úvod ---------- */
+.intro {
+  display: grid; grid-template-columns: 5fr 7fr; gap: 3.5rem; align-items: center;
+  padding-top: 4rem; padding-bottom: 4.5rem;
+}
+.intro__who { font-style: italic; color: var(--brick); margin-bottom: .8rem; }
+.intro h1 { font-size: clamp(2.3rem, 1.4rem + 3.4vw, 4.1rem); line-height: 1.04; margin-bottom: 1.4rem; }
+.intro__lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 34ch; }
+.intro__actions { display: flex; align-items: center; gap: 1.4rem; margin-top: 1.8rem; }
+.intro__photo img { border: 10px solid #fff; box-shadow: 3px 4px 0 rgba(39, 35, 29, .18); }
+.intro__photo figcaption { font-style: italic; font-size: .9rem; color: var(--ink-soft); margin-top: .6rem; text-align: right; }
+
+/* ---------- O nás ---------- */
+.about { padding-top: 4rem; padding-bottom: 5rem; border-top: 1px solid var(--ink); }
+.about__title { color: var(--ink); }
+.about__body { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start; }
+.about__cols { columns: 2 260px; column-gap: 2.5rem; column-rule: 1px solid rgba(39, 35, 29, .2); }
+.about__cols p { margin-bottom: 1.1rem; }
+.dropcap::first-letter {
+  float: left; font-family: var(--head); font-size: 4.1rem; line-height: .85;
+  padding: .3rem .5rem 0 0; color: var(--brick);
+}
+.about__clip { margin: .4rem 0 1rem; }
+.about__clip img { width: 78%; transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(39, 35, 29, .15); }
+.about__clip figcaption { font-style: italic; font-size: .88rem; color: var(--ink-soft); margin-top: .8rem; }
+.saying { margin: 4rem auto 0; max-width: 760px; text-align: center; }
+.saying p { font-style: italic; font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.2rem); line-height: 1.3; color: var(--grape); margin-bottom: .6rem; }
+.saying p::before { content: "„"; }
+.saying p::after { content: "“"; }
+.saying footer { font-size: .9rem; color: var(--ink-soft); }
+
+/* ---------- Vína ---------- */
+.wines { background: var(--mint); padding: 4.5rem 0 5rem; }
+.wines__head { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 3rem; align-items: end; margin-bottom: 2.5rem; }
+.wines__head p { margin: 0 0 .35rem; max-width: 42ch; }
+.wines__list { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.wines__col h3 {
+  font-family: var(--text); font-weight: 600; font-size: 1rem;
+  font-variant: small-caps; letter-spacing: .04em; text-transform: lowercase;
+  color: var(--leaf); border-bottom: 2px solid var(--leaf); padding-bottom: .4rem; margin-bottom: .4rem;
+}
+.wines dl { margin: 0; }
+.wines dt { font-family: var(--head); font-size: 1.45rem; color: var(--grape); padding-top: 1rem; }
+.wines dd { margin: .2rem 0 0; padding-bottom: 1rem; border-bottom: 1px dotted rgba(39, 35, 29, .35); }
+.wines__photo { margin-top: 2rem; }
+.wines__photo img { border: 8px solid #fff; }
+
+/* ---------- Sklep ---------- */
+.cellar { display: grid; grid-template-columns: 7fr 5fr; gap: 3.5rem; align-items: start; padding-top: 5rem; padding-bottom: 5rem; }
+.cellar__photo img { width: 100%; }
+.cellar__offers { display: grid; gap: 1.4rem; margin: 2rem 0 1.5rem; }
+.cellar__offers > div { border-top: 2px solid var(--brick); padding-top: .8rem; }
+.cellar__offers h3 { margin-bottom: .4rem; }
+.cellar__offers p { margin: 0; }
+
+/* ---------- Ubytování ---------- */
+.stay { background: var(--grape); color: var(--grape-light); padding: 5rem 0; }
+.stay h2 { color: #fff; }
+.stay__in { display: grid; grid-template-columns: 4fr 7fr; gap: 3.5rem; align-items: start; }
+.stay__text .button { margin-top: .8rem; }
+.stay__photos { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-auto-rows: 170px; gap: 6px; }
+.stay__photos a { display: block; overflow: hidden; }
+.stay__photos img { width: 100%; height: 100%; object-fit: cover; }
+.stay__photos a:hover img { opacity: .85; }
+.stay__big { grid-row: span 2; }
+
+/* ---------- Ceník ---------- */
+.prices { padding-top: 5rem; padding-bottom: 5rem; }
+.prices__note { color: var(--ink-soft); max-width: 60ch; margin-bottom: 2.5rem; }
+.prices__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 5rem; max-width: 980px; }
+.prices__grid h3 { border-bottom: 1px solid var(--ink); padding-bottom: .5rem; margin-bottom: .6rem; }
+.tariff { list-style: none; margin: 0 0 1rem; padding: 0; }
+.tariff li { display: flex; align-items: baseline; gap: .4rem; padding: .45rem 0; font-size: .97rem; }
+.tariff li::after { content: ""; flex: 1 1 1rem; order: 1; border-bottom: 1px dotted var(--ink-soft); }
+.tariff b { order: 2; font-weight: 600; white-space: nowrap; color: var(--brick); }
+
+/* ---------- Ocenění ---------- */
+.awards { background: var(--wall-dark); padding: 4.5rem 0; }
+.awards__list { list-style: none; margin: 0; padding: 0; columns: 2 340px; column-gap: 3rem; }
+.awards__list li { break-inside: avoid; padding: .45rem 0 .45rem 3.6rem; text-indent: -3.6rem; border-bottom: 1px solid rgba(39, 35, 29, .12); }
+.awards__list i { font-style: normal; font-family: var(--head); color: var(--brick); display: inline-block; width: 3.6rem; text-indent: 0; }
+
+/* ---------- Okolí ---------- */
+.around {
+  display: grid; grid-template-columns: 5fr 6fr; grid-template-areas: "text map" "trips map";
+  column-gap: 3.5rem; padding-top: 5rem; padding-bottom: 5rem; align-items: start;
+}
+.around__text { grid-area: text; }
+.around__trips { grid-area: trips; }
+.around .map { grid-area: map; }
+.around h3 { margin: 1rem 0 .4rem; }
+.trips__hint { margin-bottom: .4rem; }
+.trips { margin: 0; padding-left: 1.1rem; }
+.trips li::marker { color: var(--brick); }
+.trips button {
+  display: block; width: 100%; text-align: left;
+  background: none; border: 0; padding: .3rem .4rem; margin-left: -.4rem;
+  font: inherit; color: inherit; cursor: pointer;
+}
+.trips button:hover { text-decoration: underline; text-underline-offset: 3px; }
+.trips button.is-on { background: var(--mint); text-decoration: none; }
+
+.map { background: #fff; padding: .6rem; border: 1px solid rgba(39, 35, 29, .15); position: sticky; top: 80px; }
+.map iframe { display: block; width: 100%; height: 440px; border: 0; background: var(--wall-dark); }
+.map figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: .95rem; margin-top: .5rem; }
+.map__home { background: none; border: 0; padding: 0; font: 600 .95rem var(--text); color: var(--brick); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; white-space: nowrap; }
+
+/* ---------- Kontakt ---------- */
+.contact { background: var(--brick); color: var(--wall); padding: 5rem 0; }
+.contact h2 { color: #fff; }
+.contact__in { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.contact__big { font-family: var(--head); font-size: clamp(2.4rem, 1.6rem + 3vw, 3.6rem); line-height: 1; margin: 1.5rem 0 .6rem; }
+.contact__big a, .contact__mail a { text-decoration: none; }
+.contact__big a:hover, .contact__mail a:hover { text-decoration: underline; }
+.contact__mail { font-size: 1.3rem; }
+.contact__addr { margin: 2.2rem 0 0; }
+.contact__addr dt { font-weight: 600; margin-top: 1rem; }
+.contact__addr dd { margin: .2rem 0 0; }
+
+.form { background: var(--wall); color: var(--ink); padding: 2rem; }
+.form h3 { font-size: 1.6rem; color: var(--grape); margin-bottom: 1.2rem; }
+.form label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: 1rem; }
+.form input, .form select, .form textarea {
+  display: block; width: 100%; margin-top: .3rem;
+  font: 400 1rem/1.4 var(--text); color: var(--ink);
+  background: #fff; border: 1px solid #b9b1a2; border-radius: 0; padding: .6rem .7rem;
+}
+.form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid var(--grape); outline-offset: 0; border-color: var(--grape); }
+.form .chyba { border-color: var(--brick); background: #fbeee9; }
+.form__two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form__msg { margin: .8rem 0 0; font-size: .95rem; min-height: 1.5em; }
+
+/* ---------- Patička ---------- */
+.foot { padding: 1.6rem 0; font-size: .88rem; color: var(--ink-soft); }
+.foot__in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; }
+.foot p { margin: 0; }
+.foot__credit a { color: var(--brick); font-weight: 600; }
+
+/* ---------- Prohlížeč fotek ---------- */
+.viewer { position: fixed; inset: 0; z-index: 50; background: rgba(20, 18, 24, .92); display: grid; place-items: center; padding: 3.5rem 1rem 1rem; }
+.viewer[hidden] { display: none; }
+.viewer img { max-height: 85vh; width: auto; border: 8px solid #fff; }
+.viewer__close { position: absolute; top: 1rem; right: 1rem; background: none; border: 1px solid #fff; color: #fff; font: 600 .95rem var(--text); padding: .4rem .8rem; cursor: pointer; }
+
+/* ---------- Menší obrazovky ---------- */
+@media (max-width: 980px) {
+  .top__in { gap: 1rem; }
+  .menu-btn {
+    display: block; margin-left: auto;
+    background: none; border: 1px solid var(--ink); border-radius: 2px;
+    font: 600 .95rem var(--text); color: var(--ink); padding: .35rem .8rem; cursor: pointer;
+  }
+  .menu {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; gap: 0; margin: 0;
+    background: var(--wall); border-bottom: 1px solid var(--ink);
+  }
+  .menu.is-open { display: flex; }
+  .menu a { padding: .9rem 20px; border-top: 1px solid rgba(39, 35, 29, .12); font-size: 1.1rem; }
+
+  .intro, .cellar, .stay__in, .around, .contact__in, .about__body { grid-template-columns: 1fr; gap: 2.5rem; }
+  .around { grid-template-areas: "text" "trips" "map"; gap: 1.5rem; }
+  .around .map { position: static; }
+  .map iframe { height: 340px; }
+  .intro { padding-top: 2.5rem; }
+  .intro__photo { order: -1; }
+  .prices__grid { gap: 2.5rem 3rem; }
+  .wines__head { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
+  .top__tel { font-size: .95rem; }
+  .logo { font-size: 1.15rem; }
+  .intro__photo img { border-width: 6px; }
+  .wines__list, .prices__grid, .form__two { grid-template-columns: 1fr; }
+  .wines__list { gap: 2rem; }
+  .stay__photos { grid-template-columns: 1fr 1fr; grid-auto-rows: 120px; }
+  .stay__big { grid-column: span 2; grid-row: span 2; }
+  .form { padding: 1.4rem; }
+  .about__clip img { width: 70%; }
+}
